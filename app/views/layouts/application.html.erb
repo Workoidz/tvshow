@@ -10,6 +10,12 @@
   </head>
 
   <body>
+
+    <% if user_signed_in? then %>
+     <h2>Hi.. <%=current_user.email%></h2>
+     <%= link_to "Logout", destroy_user_session_path, method: :DELETE %>
+    <%end%>
+
     <%= yield %>
   </body>
 </html>
