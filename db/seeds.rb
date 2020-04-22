@@ -24,6 +24,12 @@ Show.create! [
 	{show_name:"Bay watch", show_timing:Time.now, duration: 30, channel_id: Channel.second.id},
 	{show_name:"TV world", show_timing:Time.now, duration: 30, channel_id: Channel.second.id},
 	{show_name:"BIGBOSS", show_timing:Time.now, duration: 30, channel_id: Channel.last.id},
-	{show_name:"Adventure", show_timing:Time.now, duration: 30, channel_id: Channel.last.id}
+	{show_name:"Adventure", show_timing:Time.now, duration: 30, channel_id: Channel.last.id},
+	{show_name:"WOnder world", show_timing:Time.now, duration: 30, channel_id: Channel.first.id},
+	{show_name:"People", show_timing:Time.now, duration: 30, channel_id: Channel.first.id},
+	{show_name:"Stock watch", show_timing:Time.now, duration: 30, channel_id: Channel.second.id},
+	{show_name:"TV demo", show_timing:Time.now, duration: 30, channel_id: Channel.second.id},
+	{show_name:"BIGBOSS-3", show_timing:Time.now, duration: 30, channel_id: Channel.last.id},
+	{show_name:"Adventure-2", show_timing:Time.now, duration: 30, channel_id: Channel.last.id}
 
 ]
