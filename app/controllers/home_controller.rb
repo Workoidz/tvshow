@@ -14,17 +14,23 @@ class HomeController < ApplicationController
 
   def fav
   	
-  	p " in the fav..! "+ params[:show_id]
-
+  	
 
   	if user_signed_in? then
-  		p " in the fav..! "+ params[:show_id]
-  		p current_user.shows
+
+  		
   		s = Show.find_by(id: params[:show_id])
 
-  		current_user.shows << s #Show.find_by(id: params[:show_id])
+  		if s.users.find_by(id: current_user.id) then
+  			current_user.shows.delete(s)
+  			
+  		else
+ 
+  		 current_user.shows << s #Show.find_by(id: params[:show_id])
+  		end
 
   		redirect_to root_path
+
   	else
   		redirect_to new_user_session_path
   	end

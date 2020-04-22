@@ -38,7 +38,7 @@
         <td><b><%= show.channel.channel_name %></b> </td>
         <% if user_signed_in? then %>
         	<%if show.users.find_by(id: current_user.id) then %>
-        		<td><%= link_to ' revome from favourite' %></td>
+        		<td><%= link_to ' revome from favourite',{:controller => "home", :action => "fav", :show_id => show.id } %></td>
         	<%else%>
         	<td><%= link_to 'favourite',{:controller => "home", :action => "fav", :show_id => show.id } %></td>
         	<%end%>	
