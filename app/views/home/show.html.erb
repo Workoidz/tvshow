@@ -36,7 +36,7 @@
         <td><b><%= show.show_timing %></b> </td>
         <td> <%= show.duration %> Minutes </td>
         <td><b><%= show.channel.channel_name %></b> </td>
-        <td><%= link_to 'favourite' %></td>
+        <td><%= link_to 'favourite',{:controller => "home", :action => "fav", :show_id => show.id } %></td>
         
       </tr>
     <% end %>

@@ -1,6 +1,6 @@
 class HomeController < ApplicationController
   def show
-  	p " in show method: " 
+  	
 
   	@shows = Show.all
 
@@ -8,5 +8,22 @@ class HomeController < ApplicationController
 
   	if params[:search_channel] != nil then @shows = Channel.find_by(channel_name: params[:search_channel]).shows  end #p " channel : " + params[:search_channel] end
 
+
   end
+
+
+  def fav
+  	
+  	p " in the fav..! "+ params[:show_id]
+
+
+  	if user_signed_in? then
+  		redirect_to root_path
+  	else
+  		redirect_to new_user_session_path
+  	end
+
+  end
+  
+
 end
