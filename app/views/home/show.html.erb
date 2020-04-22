@@ -36,8 +36,16 @@
         <td><b><%= show.show_timing %></b> </td>
         <td> <%= show.duration %> Minutes </td>
         <td><b><%= show.channel.channel_name %></b> </td>
-        <td><%= link_to 'favourite',{:controller => "home", :action => "fav", :show_id => show.id } %></td>
-        
+        <% if user_signed_in? then %>
+        	<%if show.users.find_by(id: current_user.id) then %>
+        		<td><%= link_to ' revome from favourite' %></td>
+        	<%else%>
+        	<td><%= link_to 'favourite',{:controller => "home", :action => "fav", :show_id => show.id } %></td>
+        	<%end%>	
+        <%else%>
+         <td><%= link_to 'favourite',{:controller => "home", :action => "fav", :show_id => show.id } %></td>
+        <%end%>
+
       </tr>
     <% end %>
   </tbody>

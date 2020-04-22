@@ -18,6 +18,12 @@ class HomeController < ApplicationController
 
 
   	if user_signed_in? then
+  		p " in the fav..! "+ params[:show_id]
+  		p current_user.shows
+  		s = Show.find_by(id: params[:show_id])
+
+  		current_user.shows << s #Show.find_by(id: params[:show_id])
+
   		redirect_to root_path
   	else
   		redirect_to new_user_session_path

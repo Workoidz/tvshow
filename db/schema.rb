@@ -10,12 +10,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_04_22_101146) do
+ActiveRecord::Schema.define(version: 2020_04_22_135735) do
 
   create_table "channels", force: :cascade do |t|
     t.string "channel_name"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "fav_shows", force: :cascade do |t|
+    t.integer "user_id", null: false
+    t.integer "show_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["show_id"], name: "index_fav_shows_on_show_id"
+    t.index ["user_id"], name: "index_fav_shows_on_user_id"
   end
 
   create_table "shows", force: :cascade do |t|
@@ -26,6 +35,13 @@ ActiveRecord::Schema.define(version: 2020_04_22_101146) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["channel_id"], name: "index_shows_on_channel_id"
+  end
+
+  create_table "shows_users", force: :cascade do |t|
+    t.integer "user_id", null: false
+    t.integer "show_id", null: false
+    t.index ["show_id"], name: "index_shows_users_on_show_id"
+    t.index ["user_id"], name: "index_shows_users_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -40,5 +56,9 @@ ActiveRecord::Schema.define(version: 2020_04_22_101146) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "fav_shows", "shows"
+  add_foreign_key "fav_shows", "users"
   add_foreign_key "shows", "channels"
+  add_foreign_key "shows_users", "shows"
+  add_foreign_key "shows_users", "users"
 end
